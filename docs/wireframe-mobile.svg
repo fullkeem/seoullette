@@ -1,0 +1,86 @@
+<svg viewBox="0 0 375 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- 모바일 디바이스 프레임 -->
+  <rect width="375" height="800" fill="#f8f9fa" stroke="#e9ecef" stroke-width="2"/>
+  
+  <!-- 상단 상태바 -->
+  <rect x="0" y="0" width="375" height="50" fill="#000" opacity="0.1"/>
+  <text x="20" y="30" font-family="Arial" font-size="12" fill="#000">9:41</text>
+  <text x="355" y="30" text-anchor="end" font-family="Arial" font-size="12" fill="#000">100%</text>
+  
+  <!-- 헤더 -->
+  <rect x="10" y="60" width="355" height="70" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="187.5" y="85" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">서울렛 🎡</text>
+  <text x="187.5" y="105" text-anchor="middle" font-family="Arial" font-size="12" fill="#6c757d">서울 모임 장소 결정 룰렛</text>
+  
+  <!-- 메인 컨테이너 -->
+  <rect x="10" y="140" width="355" height="630" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  
+  <!-- 장소 입력 영역 (상단) -->
+  <rect x="20" y="150" width="335" height="200" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="187.5" y="170" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">장소 입력</text>
+  
+  <!-- 장소 입력 폼 -->
+  <rect x="30" y="180" width="250" height="35" fill="#fff" stroke="#ced4da" stroke-width="1"/>
+  <text x="35" y="200" font-family="Arial" font-size="12" fill="#6c757d">장소명을 입력하세요</text>
+  <rect x="290" y="182" width="55" height="31" fill="#007bff" stroke="#007bff" stroke-width="1"/>
+  <text x="317.5" y="201" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">추가</text>
+  
+  <!-- 장소 목록 (간소화) -->
+  <text x="30" y="235" font-family="Arial" font-size="14" font-weight="bold">장소 목록 (3개)</text>
+  
+  <!-- 장소 아이템들 (간소화) -->
+  <rect x="30" y="245" width="315" height="25" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="35" y="260" font-family="Arial" font-size="12">1. 강남역 맛집거리</text>
+  <circle cx="335" cy="257" r="6" fill="#dc3545"/>
+  <text x="335" y="260" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff">×</text>
+  
+  <rect x="30" y="275" width="315" height="25" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="35" y="290" font-family="Arial" font-size="12">2. 홍대 술집</text>
+  <circle cx="335" cy="287" r="6" fill="#dc3545"/>
+  <text x="335" y="290" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff">×</text>
+  
+  <rect x="30" y="305" width="315" height="25" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="35" y="320" font-family="Arial" font-size="12">3. 명동 카페거리</text>
+  <circle cx="335" cy="317" r="6" fill="#dc3545"/>
+  <text x="335" y="320" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff">×</text>
+  
+  <!-- 룰렛 영역 (하단) -->
+  <rect x="20" y="360" width="335" height="380" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="187.5" y="380" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">룰렛</text>
+  
+  <!-- 룰렛 원 (모바일에 맞게 크기 축소) -->
+  <circle cx="187.5" cy="520" r="100" fill="#fff" stroke="#dee2e6" stroke-width="2"/>
+  
+  <!-- 룰렛 섹션들 (5개 섹션, 각각 72도씩, 반지름 100px) -->
+  <!-- 섹션 1: 0도-72도 -->
+  <path d="M 187.5 420 A 100 100 0 0 1 257 462.2 L 187.5 520 Z" fill="#ff6b6b" stroke="#fff" stroke-width="2"/>
+  
+  <!-- 섹션 2: 72도-144도 -->
+  <path d="M 257 462.2 A 100 100 0 0 1 257 577.8 L 187.5 520 Z" fill="#4ecdc4" stroke="#fff" stroke-width="2"/>
+  
+  <!-- 섹션 3: 144도-216도 -->
+  <path d="M 257 577.8 A 100 100 0 0 1 118 577.8 L 187.5 520 Z" fill="#45b7d1" stroke="#fff" stroke-width="2"/>
+  
+  <!-- 섹션 4: 216도-288도 -->
+  <path d="M 118 577.8 A 100 100 0 0 1 118 462.2 L 187.5 520 Z" fill="#f9ca24" stroke="#fff" stroke-width="2"/>
+  
+  <!-- 섹션 5: 288도-360도 -->
+  <path d="M 118 462.2 A 100 100 0 0 1 187.5 420 L 187.5 520 Z" fill="#f0932b" stroke="#fff" stroke-width="2"/>
+  
+  <!-- 룰렛 중앙 -->
+  <circle cx="187.5" cy="520" r="12" fill="#2d3436" stroke="#fff" stroke-width="2"/>
+  
+  <!-- 룰렛 포인터 (중앙을 가리키도록 수정) -->
+  <polygon points="187.5,405 195,420 180,420" fill="#2d3436"/>
+  
+  <!-- 스핀 버튼 -->
+  <rect x="106.25" y="650" width="162.5" height="50" rx="25" fill="#28a745" stroke="#28a745" stroke-width="1"/>
+  <text x="187.5" y="680" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#fff">🎲 스핀!</text>
+  
+  <!-- 하단 안내 -->
+  <text x="187.5" y="730" text-anchor="middle" font-family="Arial" font-size="10" fill="#6c757d">최소 2개 이상의 장소를 입력하고</text>
+  <text x="187.5" y="745" text-anchor="middle" font-family="Arial" font-size="10" fill="#6c757d">스핀 버튼을 눌러주세요</text>
+  
+  <!-- 하단 네비게이션 바 (홈 인디케이터) -->
+  <rect x="137.5" y="775" width="100" height="4" rx="2" fill="#000" opacity="0.3"/>
+</svg> 

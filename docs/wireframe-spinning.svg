@@ -1,0 +1,93 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect width="800" height="600" fill="#f8f9fa" stroke="#e9ecef" stroke-width="2"/>
+  
+  <!-- 헤더 -->
+  <rect x="20" y="20" width="760" height="80" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="400" y="50" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">서울렛 🎡</text>
+  <text x="400" y="75" text-anchor="middle" font-family="Arial" font-size="14" fill="#6c757d">서울 모임 장소 결정 룰렛</text>
+  
+  <!-- 메인 컨테이너 -->
+  <rect x="20" y="120" width="760" height="460" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  
+  <!-- 좌측: 장소 입력 영역 (비활성화 상태) -->
+  <rect x="40" y="140" width="350" height="420" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" opacity="0.5"/>
+  <text x="215" y="165" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" opacity="0.5">장소 입력</text>
+  
+  <!-- 장소 입력 폼 (비활성화) -->
+  <rect x="60" y="180" width="250" height="40" fill="#e9ecef" stroke="#ced4da" stroke-width="1" opacity="0.5"/>
+  <text x="70" y="200" font-family="Arial" font-size="14" fill="#6c757d" opacity="0.5">장소명을 입력하세요</text>
+  <rect x="320" y="185" width="60" height="30" fill="#6c757d" stroke="#6c757d" stroke-width="1" opacity="0.5"/>
+  <text x="350" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#fff" opacity="0.5">추가</text>
+  
+  <!-- 장소 목록 (비활성화) -->
+  <text x="60" y="250" font-family="Arial" font-size="16" font-weight="bold" opacity="0.5">장소 목록 (5개)</text>
+  
+  <!-- 장소 아이템들 (비활성화) -->
+  <rect x="60" y="270" width="310" height="35" fill="#fff" stroke="#dee2e6" stroke-width="1" opacity="0.5"/>
+  <text x="70" y="290" font-family="Arial" font-size="14" opacity="0.5">1. 강남역 맛집거리</text>
+  
+  <rect x="60" y="315" width="310" height="35" fill="#fff" stroke="#dee2e6" stroke-width="1" opacity="0.5"/>
+  <text x="70" y="335" font-family="Arial" font-size="14" opacity="0.5">2. 홍대 술집</text>
+  
+  <rect x="60" y="360" width="310" height="35" fill="#fff" stroke="#dee2e6" stroke-width="1" opacity="0.5"/>
+  <text x="70" y="380" font-family="Arial" font-size="14" opacity="0.5">3. 명동 카페거리</text>
+  
+  <rect x="60" y="405" width="310" height="35" fill="#fff" stroke="#dee2e6" stroke-width="1" opacity="0.5"/>
+  <text x="70" y="425" font-family="Arial" font-size="14" opacity="0.5">4. 이태원 레스토랑</text>
+  
+  <rect x="60" y="450" width="310" height="35" fill="#fff" stroke="#dee2e6" stroke-width="1" opacity="0.5"/>
+  <text x="70" y="470" font-family="Arial" font-size="14" opacity="0.5">5. 가로수길 브런치</text>
+  
+  <!-- 우측: 룰렛 영역 (활성화 상태) -->
+  <rect x="410" y="140" width="350" height="420" fill="#f8f9fa" stroke="#007bff" stroke-width="3"/>
+  <text x="585" y="165" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#007bff">룰렛 회전 중...</text>
+  
+  <!-- 회전 중인 룰렛 원 -->
+  <circle cx="585" cy="320" r="120" fill="#fff" stroke="#007bff" stroke-width="3"/>
+  
+  <!-- 회전 블러 효과 표현 -->
+  <circle cx="585" cy="320" r="110" fill="none" stroke="#007bff" stroke-width="20" opacity="0.1"/>
+  <circle cx="585" cy="320" r="100" fill="none" stroke="#007bff" stroke-width="15" opacity="0.2"/>
+  <circle cx="585" cy="320" r="90" fill="none" stroke="#007bff" stroke-width="10" opacity="0.3"/>
+  
+  <!-- 룰렛 섹션들 (블러 효과, 5개 섹션) -->
+  <!-- 섹션 1: 0도-72도 -->
+  <path d="M 585 200 A 120 120 0 0 1 668.4 254.6 L 585 320 Z" fill="#ff6b6b" stroke="#fff" stroke-width="2" opacity="0.6"/>
+  
+  <!-- 섹션 2: 72도-144도 -->
+  <path d="M 668.4 254.6 A 120 120 0 0 1 668.4 385.4 L 585 320 Z" fill="#4ecdc4" stroke="#fff" stroke-width="2" opacity="0.6"/>
+  
+  <!-- 섹션 3: 144도-216도 -->
+  <path d="M 668.4 385.4 A 120 120 0 0 1 501.6 385.4 L 585 320 Z" fill="#45b7d1" stroke="#fff" stroke-width="2" opacity="0.6"/>
+  
+  <!-- 섹션 4: 216도-288도 -->
+  <path d="M 501.6 385.4 A 120 120 0 0 1 501.6 254.6 L 585 320 Z" fill="#f9ca24" stroke="#fff" stroke-width="2" opacity="0.6"/>
+  
+  <!-- 섹션 5: 288도-360도 -->
+  <path d="M 501.6 254.6 A 120 120 0 0 1 585 200 L 585 320 Z" fill="#f0932b" stroke="#fff" stroke-width="2" opacity="0.6"/>
+  
+  <!-- 룰렛 중앙 -->
+  <circle cx="585" cy="320" r="15" fill="#007bff" stroke="#fff" stroke-width="2"/>
+  
+  <!-- 룰렛 포인터 (중앙을 가리키도록 수정) -->
+  <polygon points="585,180 595,200 575,200" fill="#dc3545"/>
+  
+  <!-- 회전 중 표시 -->
+  <circle cx="550" cy="270" r="3" fill="#007bff">
+    <animate attributeName="opacity" values="0;1;0" dur="0.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="585" cy="260" r="3" fill="#007bff">
+    <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="0.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="620" cy="270" r="3" fill="#007bff">
+    <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="0.4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- 스핀 버튼 (비활성화) -->
+  <rect x="520" y="460" width="130" height="50" rx="25" fill="#6c757d" stroke="#6c757d" stroke-width="1" opacity="0.5"/>
+  <text x="585" y="490" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#fff" opacity="0.5">회전 중...</text>
+  
+  <!-- 하단 안내 -->
+  <text x="400" y="595" text-anchor="middle" font-family="Arial" font-size="12" fill="#007bff">🎲 룰렛이 회전하고 있습니다... 잠시만 기다려주세요!</text>
+</svg> 
