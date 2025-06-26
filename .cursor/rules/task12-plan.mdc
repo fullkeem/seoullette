@@ -1,0 +1,56 @@
+---
+description: task12 plan
+globs: 
+alwaysApply: false
+---
+# Task 12 개발 계획: 메인 페이지
+
+## 구현 항목
+- RouletteGame 컨테이너 및 레이아웃 구성
+- 전체 컴포넌트 통합 및 레이아웃
+- 전체 사용자 플로우 테스트
+
+## 기술 요구사항
+- **컴포넌트 통합**: 모든 이전 Task 컴포넌트 연동
+- **레이아웃**: 반응형 그리드 시스템
+- **상태 관리**: useRoulette 훅 활용
+
+## 개발 계획
+
+### 1. RouletteGame 컨테이너
+- useRoulette 훅으로 상태 관리
+- 모든 하위 컴포넌트 연결
+- 이벤트 핸들러 통합
+
+### 2. 레이아웃 구성
+- 장소 입력 섹션 (상단)
+- 룰렛 휠 섹션 (중앙)
+- 스핀 버튼 (하단)
+- 결과 모달 (오버레이)
+
+### 3. 컴포넌트 통합
+- PlaceInput/PlaceList (Task 5)
+- RouletteWheel (Task 7, 8)
+- SpinButton (Task 9)
+- RouletteResult (Task 10)
+
+### 4. 사용자 플로우
+- 장소 입력 → 룰렛 표시 → 스핀 → 결과 → 재시작
+- 각 단계별 상태 전환
+- 에러 상황 처리
+
+## 파일 구조
+```
+src/components/roulette/
+├── roulette-game.tsx   # 메인 게임 컨테이너
+└── ...                # 기타 룰렛 컴포넌트
+```
+
+## 완료 기준
+- [ ] 모든 컴포넌트 통합 완료
+- [ ] 전체 사용자 플로우 동작
+- [ ] 반응형 레이아웃 적용
+- [ ] 에러 상황 처리 확인
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [task5-plan.mdc](mdc:task5-plan.mdc), [task11-plan.mdc](mdc:task11-plan.mdc)
+

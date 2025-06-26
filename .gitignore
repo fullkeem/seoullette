@@ -42,6 +42,7 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+.vscode/
 
 # OS generated files
 .DS_Store
@@ -163,9 +164,4 @@ Desktop.ini
 /public/uploads/
 *.local 
 
-#Cursor
-.cursor/
-.cursorrules
-.cursorignore
-.cursorignorerules
-.cursorignorerules
+

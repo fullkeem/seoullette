@@ -1,0 +1,54 @@
+---
+description: task7 plan
+globs: 
+alwaysApply: false
+---
+# Task 7 개발 계획: 룰렛 UI 컴포넌트
+
+## 구현 항목
+- RouletteWheel 시각적 구현
+- CSS/SVG 기반 원형 룰렛 UI
+- 다양한 장소 개수(2-10개)에서 시각적 확인
+
+## 기술 요구사항
+- **CSS/SVG**: 원형 룰렛 시각화
+- **Tailwind CSS**: 스타일링 및 색상 시스템
+- **반응형**: 모바일/데스크톱 대응
+
+## 개발 계획
+
+### 1. RouletteWheel 컴포넌트
+- SVG 기반 원형 룰렛 구현
+- 동적 섹션 생성 (2-10개)
+- 중앙 포인터 표시
+
+### 2. 섹션 계산 로직
+- 360도 / 장소 개수 = 섹션 각도
+- SVG path 요소로 섹션 생성
+- 각 섹션에 장소명 표시
+
+### 3. 색상 시스템
+- Tailwind CSS 색상 팔레트 활용
+- 섹션별 구분 가능한 색상
+- 접근성 고려 (색맹 대응)
+
+### 4. 반응형 디자인
+- 모바일: 작은 화면 최적화
+- 데스크톱: 큰 화면 활용
+- 터치 친화적 크기
+
+## 파일 구조
+```
+src/components/roulette/
+├── roulette-wheel.tsx  # 룰렛 휠 컴포넌트
+└── ...                # 기타 룰렛 컴포넌트
+```
+
+## 완료 기준
+- [ ] SVG 기반 룰렛 휠 구현
+- [ ] 2-10개 장소 동적 섹션 생성
+- [ ] 반응형 디자인 적용
+- [ ] 접근성 기본 요구사항 충족
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [task3-plan.mdc](mdc:task3-plan.mdc), [task6-plan.mdc](mdc:task6-plan.mdc)
+

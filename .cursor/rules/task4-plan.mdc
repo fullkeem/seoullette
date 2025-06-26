@@ -1,0 +1,54 @@
+---
+description: task4 plan
+globs: 
+alwaysApply: false
+---
+# Task 4 개발 계획: 로컬 스토리지 서비스
+
+## 구현 항목
+- 장소 데이터 저장/로드 기능 구현
+- localStorage API 활용한 데이터 영속성
+- 브라우저 개발자 도구에서 데이터 저장 확인
+
+## 기술 요구사항
+- **Web Storage API**: localStorage 활용
+- **TypeScript**: StorageService 인터페이스 구현
+- **데이터 검증**: JSON 파싱 에러 처리
+
+## 개발 계획
+
+### 1. StorageService 클래스 구현
+- savePlaces(): Place[] 배열 저장
+- loadPlaces(): 저장된 데이터 로드
+- clearData(): 모든 데이터 삭제
+
+### 2. 데이터 직렬화/역직렬화
+- JSON.stringify()로 데이터 저장
+- JSON.parse()로 데이터 복원
+- Date 객체 처리 (createdAt)
+
+### 3. 에러 처리
+- localStorage 접근 불가 시 처리
+- JSON 파싱 실패 시 기본값 반환
+- 저장 공간 부족 시 처리
+
+### 4. 데이터 검증
+- Place 인터페이스 타입 검증
+- 손상된 데이터 복구 로직
+- 마이그레이션 지원 (필요시)
+
+## 파일 구조
+```
+src/lib/
+├── storage.ts         # 스토리지 서비스 구현
+└── utils.ts          # 유틸리티 함수
+```
+
+## 완료 기준
+- [ ] StorageService 인터페이스 구현 완료
+- [ ] 데이터 저장/로드 기능 동작 확인
+- [ ] 에러 처리 로직 구현
+- [ ] 브라우저 개발자 도구에서 데이터 확인
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [task2-plan.mdc](mdc:task2-plan.mdc)
+

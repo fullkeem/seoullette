@@ -1,0 +1,54 @@
+---
+description: task8 plan
+globs: 
+alwaysApply: false
+---
+# Task 8 개발 계획: 룰렛 애니메이션
+
+## 구현 항목
+- 회전 애니메이션 및 결과 표시
+- CSS Transform 기반 부드러운 회전 효과
+- 60fps 애니메이션 성능 확인
+
+## 기술 요구사항
+- **CSS Transform**: rotate() 변환 사용
+- **Tailwind CSS**: 애니메이션 유틸리티 활용
+- **성능**: 60fps 부드러운 애니메이션
+
+## 개발 계획
+
+### 1. 회전 애니메이션 구현
+- CSS transform: rotate() 사용
+- transition-duration으로 시간 제어
+- ease-out 타이밍 함수 적용
+
+### 2. 애니메이션 계산
+- 최종 각도 = (선택된 섹션 각도 + 여러 바퀴 회전)
+- 2-4초 애니메이션 지속 시간
+- 자연스러운 감속 효과
+
+### 3. 성능 최적화
+- transform 속성만 사용 (GPU 가속)
+- will-change: transform 적용
+- 불필요한 리렌더링 방지
+
+### 4. 접근성 고려
+- motion-reduce 미디어 쿼리 지원
+- 애니메이션 비활성화 옵션
+- 스크린 리더 지원
+
+## 파일 구조
+```
+src/components/roulette/
+├── roulette-wheel.tsx  # 애니메이션 로직 포함
+└── ...                # 기타 룰렛 컴포넌트
+```
+
+## 완료 기준
+- [ ] 부드러운 회전 애니메이션 구현
+- [ ] 60fps 성능 확인
+- [ ] motion-reduce 접근성 지원
+- [ ] 다양한 결과 위치 테스트
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [task7-plan.mdc](mdc:task7-plan.mdc), [tech-stack.mdc](mdc:tech-stack.mdc)
+

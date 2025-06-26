@@ -1,0 +1,110 @@
+---
+description: development policy
+globs: 
+alwaysApply: false
+---
+# 서울렛 개발 정책 (Development Policy)
+
+## 코드 품질 기준
+
+### 📝 TypeScript 및 코딩 스타일
+- **TypeScript strict mode 필수**: 컴파일 에러 0개 유지
+- **ESLint + Prettier 준수**: `extends: next/core-web-vitals` 설정 사용
+- **함수 크기 제한**: 함수당 최대 20줄
+- **파일 분리**: 컴포넌트별 단일 파일, 관련 기능별 그룹화
+
+### 🏗️ 아키텍처 원칙 (단순화된 SOLID)
+- **단일 책임**: 컴포넌트는 하나의 명확한 역할만 담당
+- **인터페이스 분리**: TypeScript 인터페이스로 명확한 타입 정의
+- **의존성 주입**: props와 hooks를 통한 의존성 관리
+- **과도한 추상화 지양**: 프로토타입 특성상 실용성 우선
+
+## 개발 워크플로우
+
+### 🔄 개발 프로세스
+1. **기능 단위 개발**: 작은 단위로 구현 후 즉시 테스트
+2. **점진적 통합**: 컴포넌트 완성 후 상위 컴포넌트와 연동
+3. **수동 테스트 우선**: UI 컴포넌트는 브라우저에서 직접 확인
+4. **핵심 로직 검증**: 비즈니스 로직은 단위 테스트로 검증
+
+### 🧪 테스트 전략 (선택적 적용)
+**반드시 테스트가 필요한 부분:**
+- `roulette-engine.ts`: 무작위 선택 알고리즘
+- `storage.ts`: 데이터 저장/로드 로직
+- 입력 검증 함수
+
+**수동 테스트로 충분한 부분:**
+- UI 컴포넌트 (Button, Input, Modal 등)
+- 애니메이션 및 스타일링
+- 레이아웃 및 반응형 디자인
+
+### 📋 커밋 및 배포
+- **작은 단위 커밋**: 기능별로 의미있는 단위로 커밋
+- **빌드 검증**: PR 전 `pnpm run build` 성공 확인
+- **린트 검사**: `pnpm run lint` 통과 필수
+
+## 보안 및 접근성
+
+### 🔒 보안 가이드라인
+- **환경변수 사용**: 설정값 하드코딩 금지
+- **입력 검증**: 사용자 입력 데이터 검증 필수
+- **XSS 방지**: React의 기본 이스케이핑 활용
+
+### ♿ 접근성 고려사항
+- **키보드 네비게이션**: 모든 인터랙티브 요소 키보드 접근 가능
+- **모션 감소**: `motion-reduce` 고려한 애니메이션 구현
+- **색상 대비**: 충분한 명도 대비 유지
+- **스크린 리더**: 적절한 ARIA 라벨 사용
+
+## 성능 및 최적화
+
+### ⚡ 성능 가이드라인
+- **번들 크기 모니터링**: 불필요한 의존성 추가 지양
+- **이미지 최적화**: Next.js Image 컴포넌트 활용
+- **CSS 최적화**: Tailwind CSS PurgeCSS 활용
+- **지연 로딩**: 필요시 React.lazy() 적용
+
+## 문서화 및 유지보수
+
+### 📚 코드 문서화
+- **복잡한 로직**: 주석으로 의도와 동작 설명
+- **TypeScript 우선**: 타입 정의를 통한 자체 문서화
+- **README 업데이트**: 주요 변경사항 반영
+
+### 🔧 디버깅 및 로깅
+- **구조화된 로깅**: console.log 대신 의미있는 로깅
+- **에러 핸들링**: try-catch 블록으로 명시적 에러 처리
+- **개발 도구**: React DevTools, TypeScript 컴파일러 활용
+
+## 프로젝트별 특수 고려사항
+
+### 🎯 룰렛 게임 특성
+- **공정성 보장**: 무작위 선택 알고리즘 검증 필수
+- **애니메이션 성능**: 60fps 유지를 위한 CSS 최적화
+- **데이터 영속성**: localStorage 사용 시 에러 처리
+
+### 📱 반응형 및 크로스 브라우저
+- **모바일 우선**: Tailwind CSS 모바일-퍼스트 접근
+- **터치 인터페이스**: 모바일 터치 이벤트 고려
+- **브라우저 호환성**: 모던 브라우저 (Chrome, Firefox, Safari, Edge) 지원
+
+## 개발 환경 설정
+
+### 🛠️ 필수 도구
+- **Node.js**: 18+ 버전 사용
+- **패키지 매니저**: pnpm 권장
+- **에디터**: VSCode + TypeScript/ESLint 확장
+
+### 🔍 코드 검사 설정
+```json
+// .eslintrc.json
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "max-lines-per-function": ["error", 20]
+  }
+}
+```
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [tech-stack.mdc](mdc:tech-stack.mdc), [system-architecture.mdc](mdc:system-architecture.mdc)
+

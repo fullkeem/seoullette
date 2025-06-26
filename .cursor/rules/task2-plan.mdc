@@ -1,0 +1,52 @@
+---
+description: task2 plan
+globs: 
+alwaysApply: false
+---
+# Task 2 개발 계획: 타입 정의
+
+## 구현 항목
+- 핵심 데이터 타입 및 인터페이스 정의
+- Place, RouletteState, RouletteEngine 인터페이스 작성
+- TypeScript 컴파일 오류 없음 확인
+
+## 기술 요구사항
+- **TypeScript strict mode**: 타입 안전성 확보
+- **인터페이스 분리**: 명확한 타입 정의
+- **타입 재사용성**: 확장 가능한 구조
+
+## 개발 계획
+
+### 1. 기본 데이터 타입 정의
+- Place 인터페이스 (id, name, createdAt)
+- 장소 데이터 구조 명확화
+
+### 2. 게임 상태 타입 정의
+- RouletteState 인터페이스
+- 게임 진행 상태 관리 타입
+- 결과 및 히스토리 타입
+
+### 3. 서비스 인터페이스 정의
+- RouletteEngine 인터페이스
+- StorageService 인터페이스
+- 비즈니스 로직 추상화
+
+### 4. 타입 검증
+- TypeScript 컴파일 확인
+- 타입 일관성 검증
+- 확장성 검토
+
+## 파일 구조
+```
+src/types/
+├── index.ts          # 전체 타입 정의 및 export
+└── ...               # 필요시 추가 타입 파일
+```
+
+## 완료 기준
+- [x] TypeScript 컴파일 에러 0개
+- [x] 모든 핵심 인터페이스 정의 완료
+- [x] 타입 파일 구조 정리
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [task1-plan.mdc](mdc:task1-plan.mdc)
+

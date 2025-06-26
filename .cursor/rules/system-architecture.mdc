@@ -1,0 +1,278 @@
+---
+description: System Architecture
+globs: 
+alwaysApply: false
+---
+# 서울렛 시스템 아키텍처 (System Architecture)
+
+## 아키텍처 구성요소
+
+### 🏗️ 전체 시스템 개요
+```mermaid
+graph TB
+    subgraph "클라이언트 환경"
+        Browser[웹 브라우저]
+        LocalStorage[로컬 스토리지]
+    end
+    
+    subgraph "프론트엔드 애플리케이션"
+        NextJS[Next.js 15 App Router]
+        Components[React 컴포넌트]
+        TailwindCSS[Tailwind CSS]
+        TypeScript[TypeScript]
+    end
+    
+    subgraph "배포 환경"
+        StaticFiles[정적 파일]
+        CDN[CDN/호스팅]
+    end
+    
+    Browser --> NextJS
+    NextJS --> Components
+    Components --> TailwindCSS
+    Components --> LocalStorage
+    StaticFiles --> CDN
+    CDN --> Browser
+```
+
+### 🔧 핵심 구성요소
+- **Next.js 15**: 애플리케이션 프레임워크 (App Router)
+- **React 18**: UI 컴포넌트 라이브러리
+- **TypeScript**: 정적 타입 검사 및 개발 도구
+- **Tailwind CSS**: 스타일링 및 애니메이션
+- **Web Storage API**: 데이터 영속성
+
+## 계층 구조
+
+### 🏢 애플리케이션 계층 구조
+```mermaid
+graph TD
+    subgraph "프레젠테이션 계층 (Presentation Layer)"
+        UI[UI 컴포넌트]
+        Pages[페이지 컴포넌트]
+        Layout[레이아웃 컴포넌트]
+    end
+    
+    subgraph "비즈니스 로직 계층 (Business Logic Layer)"
+        RouletteLogic[룰렛 게임 로직]
+        RandomAlgorithm[무작위 선택 알고리즘]
+        ValidationLogic[입력 검증 로직]
+    end
+    
+    subgraph "데이터 계층 (Data Layer)"
+        LocalStorageService[로컬 스토리지 서비스]
+        DataTypes[TypeScript 타입 정의]
+        DataValidation[데이터 검증]
+    end
+    
+    UI --> Pages
+    Pages --> Layout
+    Pages --> RouletteLogic
+    RouletteLogic --> RandomAlgorithm
+    RouletteLogic --> ValidationLogic
+    RouletteLogic --> LocalStorageService
+    LocalStorageService --> DataTypes
+    LocalStorageService --> DataValidation
+```
+
+### 📁 디렉토리 구조
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # 루트 레이아웃
+│   ├── page.tsx           # 메인 페이지
+│   └── globals.css        # 전역 스타일
+├── components/             # 재사용 가능한 컴포넌트
+│   ├── ui/                # 기본 UI 컴포넌트
+│   ├── roulette/          # 룰렛 관련 컴포넌트
+│   └── forms/             # 폼 관련 컴포넌트
+├── lib/                   # 비즈니스 로직 및 유틸리티
+│   ├── roulette-engine.ts # 룰렛 게임 엔진
+│   ├── storage.ts         # 로컬 스토리지 서비스
+│   └── utils.ts           # 공통 유틸리티
+├── types/                 # TypeScript 타입 정의
+│   └── index.ts           # 전역 타입 정의
+└── hooks/                 # 커스텀 React 훅
+    └── use-roulette.ts    # 룰렛 상태 관리 훅
+```
+
+## 모듈화 및 컴포넌트
+
+### 🧩 컴포넌트 구성도
+```mermaid
+graph TD
+    subgraph "메인 앱 컴포넌트"
+        App[App Layout]
+        MainPage[Main Page]
+    end
+    
+    subgraph "룰렛 컴포넌트"
+        RouletteGame[RouletteGame]
+        RouletteWheel[RouletteWheel]
+        RouletteResult[RouletteResult]
+        SpinButton[SpinButton]
+    end
+    
+    subgraph "입력 컴포넌트"
+        PlaceInput[PlaceInput]
+        PlaceList[PlaceList]
+        PlaceItem[PlaceItem]
+    end
+    
+    subgraph "UI 컴포넌트"
+        Button[Button]
+        Input[Input]
+        Modal[Modal]
+        Loading[Loading]
+    end
+    
+    App --> MainPage
+    MainPage --> RouletteGame
+    RouletteGame --> RouletteWheel
+    RouletteGame --> RouletteResult
+    RouletteGame --> SpinButton
+    RouletteGame --> PlaceInput
+    PlaceInput --> PlaceList
+    PlaceList --> PlaceItem
+    PlaceItem --> Button
+    PlaceInput --> Input
+    RouletteResult --> Modal
+    SpinButton --> Loading
+```
+
+### 🔗 컴포넌트 관계
+- **RouletteGame**: 최상위 컨테이너 컴포넌트
+- **RouletteWheel**: 룰렛 시각화 및 애니메이션
+- **PlaceInput**: 장소 입력 및 관리
+- **SpinButton**: 게임 실행 트리거
+- **RouletteResult**: 결과 표시 및 재시작
+
+## 데이터 흐름
+
+### 🌊 데이터 플로우 다이어그램
+```mermaid
+sequenceDiagram
+    participant User as 사용자
+    participant UI as UI 컴포넌트
+    participant Logic as 비즈니스 로직
+    participant Storage as 로컬 스토리지
+    
+    User->>UI: 장소 입력
+    UI->>Logic: 장소 데이터 검증
+    Logic->>Storage: 장소 목록 저장
+    Storage-->>Logic: 저장 완료
+    Logic-->>UI: 상태 업데이트
+    UI-->>User: 화면 렌더링
+    
+    User->>UI: 스핀 버튼 클릭
+    UI->>Logic: 룰렛 실행 요청
+    Logic->>Logic: 무작위 선택 알고리즘
+    Logic->>Storage: 최근 결과 저장 (선택사항)
+    Logic-->>UI: 결과 반환
+    UI-->>User: 애니메이션 + 결과 표시
+```
+
+### 📊 상태 관리 흐름
+```mermaid
+stateDiagram-v2
+    [*] --> 초기화
+    초기화 --> 장소입력중
+    장소입력중 --> 장소입력중: 장소 추가/삭제
+    장소입력중 --> 게임준비완료: 최소 2개 장소 입력
+    게임준비완료 --> 룰렛회전중: 스핀 버튼 클릭
+    룰렛회전중 --> 결과표시: 회전 완료
+    결과표시 --> 게임준비완료: 다시 하기
+    결과표시 --> 장소입력중: 장소 수정
+    게임준비완료 --> 장소입력중: 장소 수정
+```
+
+## API 및 인터페이스
+
+### 🔌 내부 인터페이스 정의
+```typescript
+// 핵심 데이터 타입
+interface Place {
+  id: string;
+  name: string;
+  createdAt: Date;
+}
+
+interface RouletteState {
+  places: Place[];
+  isSpinning: boolean;
+  result: Place | null;
+  history: Place[];
+}
+
+// 룰렛 엔진 인터페이스
+interface RouletteEngine {
+  spin(places: Place[]): Promise<Place>;
+  validatePlaces(places: Place[]): boolean;
+  generateRandomResult(places: Place[]): Place;
+}
+
+// 스토리지 서비스 인터페이스
+interface StorageService {
+  savePlaces(places: Place[]): void;
+  loadPlaces(): Place[];
+  clearData(): void;
+}
+```
+
+### 🌐 브라우저 API 활용
+- **Web Storage API**: 사용자 데이터 영속성
+- **CSS Animation API**: 룰렛 회전 애니메이션
+- **Intersection Observer API**: 성능 최적화 (필요시)
+
+## 시스템 외부 환경과의 관계
+
+### 🌍 외부 시스템 연동도
+```mermaid
+graph LR
+    subgraph "개발 환경"
+        Dev[개발자 PC]
+        DevServer[개발 서버]
+    end
+    
+    subgraph "서울렛 시스템"
+        App[Next.js 앱]
+        StaticFiles[빌드된 정적 파일]
+    end
+    
+    subgraph "배포 환경"
+        Vercel[Vercel]
+        Netlify[Netlify]
+        GitHub[GitHub Pages]
+    end
+    
+    subgraph "사용자 환경"
+        ModernBrowser[모던 브라우저]
+        MobileDevice[모바일 기기]
+        DesktopDevice[데스크톱]
+    end
+    
+    Dev --> DevServer
+    DevServer --> App
+    App --> StaticFiles
+    StaticFiles --> Vercel
+    StaticFiles --> Netlify
+    StaticFiles --> GitHub
+    Vercel --> ModernBrowser
+    Netlify --> MobileDevice
+    GitHub --> DesktopDevice
+```
+
+### 🎯 배포 및 운영 환경
+- **정적 호스팅**: CDN을 통한 전역 배포
+- **브라우저 호환성**: 모던 브라우저 (Chrome, Firefox, Safari, Edge)
+- **디바이스 지원**: 모바일, 태블릿, 데스크톱
+- **네트워크 의존성**: 초기 로딩 시에만 필요
+
+### 🔒 보안 및 제약사항
+- **클라이언트 사이드 전용**: 서버 보안 이슈 없음
+- **로컬 데이터**: 브라우저 스토리지에만 저장
+- **HTTPS 필수**: 모던 브라우저 API 활용을 위한 보안 연결
+- **Cross-Origin 제약**: 정적 파일 서빙으로 제약 없음
+
+참고 파일: [prd.mdc](mdc:prd.mdc), [tech-stack.mdc](mdc:tech-stack.mdc)
+

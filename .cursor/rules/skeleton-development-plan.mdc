@@ -1,0 +1,97 @@
+---
+description: skeletion development plan
+globs: 
+alwaysApply: false
+---
+# 서울렛 스켈레톤 코드 개발 계획
+
+## 개발 계획
+
+### 1단계: 프로젝트 초기 설정
+- 패키지 매니저 pnpm 사용
+- Next.js 15 App Router 프로젝트 생성
+- TypeScript 설정 (strict mode)
+- Tailwind CSS 설정 및 애니메이션 플러그인
+- ESLint + Prettier 설정
+- 기본 폴더 구조 생성
+
+### 2단계: 타입 시스템 구축
+- 핵심 데이터 타입 정의 (Place, RouletteState)
+- 인터페이스 정의 (RouletteEngine, StorageService)
+- 전역 타입 선언 파일 작성
+
+### 3단계: 기본 UI 컴포넌트 개발
+- Button 컴포넌트 (Tailwind CSS 기반)
+- Input 컴포넌트
+- Modal 컴포넌트
+- Loading 컴포넌트
+
+### 4단계: 데이터 저장 서비스 구현
+- localStorage 기반 스토리지 서비스
+- 장소 데이터 저장/로드 기능
+- 데이터 검증 로직
+
+### 5단계: 장소 관리 컴포넌트 개발
+- PlaceInput 컴포넌트 (입력 폼)
+- PlaceList 컴포넌트 (목록 표시)
+- PlaceItem 컴포넌트 (개별 아이템)
+- 더미 데이터로 테스트
+
+### 6단계: 룰렛 게임 엔진 구현
+- 무작위 선택 알고리즘
+- 게임 상태 관리 로직
+- 입력 검증 (최소 2개, 최대 10개)
+- 더미 장소 데이터로 테스트
+
+### 7단계: 룰렛 UI 컴포넌트 개발
+- RouletteWheel 컴포넌트 (CSS/SVG 기반)
+- 원형 룰렛 시각화
+- 동적 섹션 생성 (2-10개 대응)
+
+### 8단계: 애니메이션 시스템 구현
+- Tailwind CSS 애니메이션 활용
+- 룰렛 회전 애니메이션
+- 부드러운 전환 효과
+- 60fps 성능 최적화
+
+### 9단계: 스핀 버튼 및 게임 실행
+- SpinButton 컴포넌트
+- 게임 트리거 로직
+- 버튼 상태 관리 (활성/비활성/스핀 중)
+- 중복 클릭 방지
+
+### 10단계: 결과 표시 시스템
+- RouletteResult 컴포넌트
+- 결과 모달 구현
+- 재시작 기능
+- 결과 하이라이트 효과
+
+### 11단계: 상태 관리 훅 개발
+- useRoulette 커스텀 훅
+- 전체 게임 상태 관리
+- 컴포넌트 간 상태 공유
+
+### 12단계: 메인 페이지 통합
+- RouletteGame 컨테이너 컴포넌트
+- 레이아웃 구성
+- 컴포넌트 통합
+- 전체 플로우 연결
+
+### 13단계: 반응형 디자인 적용
+- Tailwind CSS 반응형 클래스
+- 모바일/데스크톱 최적화
+- 터치 인터페이스 지원
+
+### 14단계: 통합 테스트 및 최적화
+- 전체 사용자 플로우 테스트
+- 성능 최적화
+- 접근성 개선
+- 버그 수정
+
+### 15단계: 빌드 및 배포 준비
+- 프로덕션 빌드 설정
+- 정적 파일 최적화
+- 배포 환경 설정
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [tech-stack.mdc](mdc:tech-stack.mdc)
+

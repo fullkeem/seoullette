@@ -1,0 +1,54 @@
+---
+description: task11 plan
+globs: 
+alwaysApply: false
+---
+# Task 11 개발 계획: 커스텀 훅
+
+## 구현 항목
+- useRoulette 상태 관리 훅 구현
+- 룰렛 게임 전체 상태 관리
+- 상태 변화 시나리오별 테스트
+
+## 기술 요구사항
+- **React Hooks**: useState, useEffect 활용
+- **상태 관리**: RouletteState 인터페이스 구현
+- **비즈니스 로직**: 게임 플로우 관리
+
+## 개발 계획
+
+### 1. useRoulette 훅 구현
+- 게임 상태 (places, isSpinning, result)
+- 액션 함수 (addPlace, removePlace, spin)
+- 스토리지 연동 (자동 저장/로드)
+
+### 2. 상태 관리 로직
+- 장소 추가/삭제 기능
+- 스핀 상태 관리
+- 결과 처리 및 히스토리
+
+### 3. 비즈니스 로직 통합
+- 룰렛 엔진 연동 (Task 6)
+- 스토리지 서비스 연동 (Task 4)
+- 검증 로직 포함
+
+### 4. 훅 인터페이스 설계
+- 명확한 반환 타입 정의
+- 최소한의 API 노출
+- 재사용 가능한 구조
+
+## 파일 구조
+```
+src/hooks/
+├── use-roulette.ts     # 룰렛 상태 관리 훅
+└── ...                # 기타 커스텀 훅
+```
+
+## 완료 기준
+- [ ] useRoulette 훅 구현 완료
+- [ ] 모든 게임 상태 관리 동작
+- [ ] 스토리지 자동 연동 확인
+- [ ] 상태 변화 시나리오 테스트
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [task6-plan.mdc](mdc:task6-plan.mdc), [task4-plan.mdc](mdc:task4-plan.mdc)
+

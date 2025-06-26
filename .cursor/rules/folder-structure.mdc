@@ -1,0 +1,54 @@
+---
+description: folder structure
+globs: 
+alwaysApply: false
+---
+# 서울렛 프로젝트 폴더 구조
+
+## 폴더 트리
+
+```
+seoullette/
+├── docs/
+│   ├── wireframe-main.svg
+│   ├── wireframe-mobile.svg
+│   ├── wireframe-result.svg
+│   └── wireframe-spinning.svg
+├── src/
+│   ├── app/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── button.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── modal.tsx
+│   │   │   └── loading.tsx
+│   │   ├── roulette/
+│   │   │   ├── roulette-game.tsx
+│   │   │   ├── roulette-wheel.tsx
+│   │   │   ├── roulette-result.tsx
+│   │   │   └── spin-button.tsx
+│   │   └── forms/
+│   │       ├── place-input.tsx
+│   │       ├── place-list.tsx
+│   │       └── place-item.tsx
+│   ├── lib/
+│   │   ├── roulette-engine.ts
+│   │   ├── storage.ts
+│   │   └── utils.ts
+│   ├── hooks/
+│   │   └── use-roulette.ts
+│   └── types/
+│       └── index.ts
+├── public/
+│   ├── favicon.ico
+│   └── logo.svg
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── tailwind.config.js
+├── next.config.js
+└── README.md
+

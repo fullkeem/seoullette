@@ -1,0 +1,56 @@
+---
+description: task3 plan
+globs: 
+alwaysApply: false
+---
+# Task 3 개발 계획: 기본 UI 컴포넌트
+
+## 구현 항목
+- Button, Input, Modal, Loading 컴포넌트 구현
+- Tailwind CSS 기반 재사용 가능한 UI 컴포넌트
+- 스토리북 또는 개별 페이지에서 렌더링 확인
+
+## 기술 요구사항
+- **Tailwind CSS**: 유틸리티 기반 스타일링
+- **TypeScript**: Props 인터페이스 정의
+- **접근성**: WCAG 2.2 AA 준수
+
+## 개발 계획
+
+### 1. Button 컴포넌트
+- 기본/비활성/로딩 상태 지원
+- 크기 변형 (sm, md, lg)
+- 색상 변형 (primary, secondary, danger)
+
+### 2. Input 컴포넌트
+- 텍스트 입력 필드
+- 에러 상태 및 메시지 표시
+- 라벨 및 플레이스홀더 지원
+
+### 3. Modal 컴포넌트
+- 오버레이 및 중앙 정렬
+- 닫기 버튼 및 ESC 키 지원
+- 포커스 트랩 구현
+
+### 4. Loading 컴포넌트
+- 스피너 애니메이션
+- 텍스트 로딩 표시
+- 크기 조절 가능
+
+## 파일 구조
+```
+src/components/ui/
+├── button.tsx        # 버튼 컴포넌트
+├── input.tsx         # 입력 필드 컴포넌트
+├── modal.tsx         # 모달 컴포넌트
+└── loading.tsx       # 로딩 컴포넌트
+```
+
+## 완료 기준
+- [ ] 모든 UI 컴포넌트 구현 완료
+- [ ] TypeScript 타입 정의 완료
+- [ ] 접근성 기본 요구사항 충족
+- [ ] 반응형 디자인 적용
+
+참고 파일: [development-tasks.mdc](mdc:development-tasks.mdc), [tech-stack.mdc](mdc:tech-stack.mdc)
+
