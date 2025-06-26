@@ -29,7 +29,7 @@ export class BasicRouletteEngine implements RouletteEngine {
   }
 
   /**
-   * 장소 배열의 유효성을 검증합니다.
+   * 장소 배열의 기본 유효성을 검증합니다.
    * @param places 검증할 장소 배열
    * @returns 유효성 여부
    */
@@ -39,38 +39,16 @@ export class BasicRouletteEngine implements RouletteEngine {
       return false;
     }
 
-    // 개수 체크
-    if (places.length < this.MIN_PLACES || places.length > this.MAX_PLACES) {
+    // 개수 체크 (최소 2개)
+    if (places.length < this.MIN_PLACES) {
       return false;
     }
 
-    // 각 장소의 유효성 체크
+    // 각 장소의 기본 유효성 체크
     for (const place of places) {
-      if (
-        !place ||
-        typeof place.id !== "string" ||
-        typeof place.name !== "string"
-      ) {
+      if (!place || !place.name || !place.name.trim()) {
         return false;
       }
-
-      if (!place.id.trim() || !place.name.trim()) {
-        return false;
-      }
-    }
-
-    // 중복 ID 체크
-    const ids = places.map((place) => place.id);
-    const uniqueIds = new Set(ids);
-    if (ids.length !== uniqueIds.size) {
-      return false;
-    }
-
-    // 중복 이름 체크 (대소문자 구분 없이)
-    const names = places.map((place) => place.name.toLowerCase().trim());
-    const uniqueNames = new Set(names);
-    if (names.length !== uniqueNames.size) {
-      return false;
     }
 
     return true;

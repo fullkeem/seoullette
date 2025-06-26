@@ -12,7 +12,6 @@ export interface RouletteState {
   places: Place[];
   isSpinning: boolean;
   result: Place | null;
-  history: Place[];
 }
 
 // 룰렛 엔진 인터페이스
