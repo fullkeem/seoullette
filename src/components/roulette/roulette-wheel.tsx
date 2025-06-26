@@ -52,23 +52,35 @@ export function RouletteWheel({
       const endAngle = (index + 1) * anglePerSection - 90;
       const color = colors[index % colors.length];
 
-      // SVG path 계산
-      const startAngleRad = (startAngle * Math.PI) / 180;
-      const endAngleRad = (endAngle * Math.PI) / 180;
+      // 장소가 1개일 때는 전체 원으로 처리
+      let pathData;
+      if (places.length === 1) {
+        // 전체 원을 그리기 위해 두 개의 반원 arc를 사용
+        pathData = [
+          `M ${centerX} ${centerY - radius}`,
+          `A ${radius} ${radius} 0 0 1 ${centerX} ${centerY + radius}`,
+          `A ${radius} ${radius} 0 0 1 ${centerX} ${centerY - radius}`,
+          "Z",
+        ].join(" ");
+      } else {
+        // SVG path 계산 (기존 로직)
+        const startAngleRad = (startAngle * Math.PI) / 180;
+        const endAngleRad = (endAngle * Math.PI) / 180;
 
-      const x1 = centerX + radius * Math.cos(startAngleRad);
-      const y1 = centerY + radius * Math.sin(startAngleRad);
-      const x2 = centerX + radius * Math.cos(endAngleRad);
-      const y2 = centerY + radius * Math.sin(endAngleRad);
+        const x1 = centerX + radius * Math.cos(startAngleRad);
+        const y1 = centerY + radius * Math.sin(startAngleRad);
+        const x2 = centerX + radius * Math.cos(endAngleRad);
+        const y2 = centerY + radius * Math.sin(endAngleRad);
 
-      const largeArcFlag = anglePerSection > 180 ? 1 : 0;
+        const largeArcFlag = anglePerSection > 180 ? 1 : 0;
 
-      const pathData = [
-        `M ${centerX} ${centerY}`,
-        `L ${x1} ${y1}`,
-        `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
-        "Z",
-      ].join(" ");
+        pathData = [
+          `M ${centerX} ${centerY}`,
+          `L ${x1} ${y1}`,
+          `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+          "Z",
+        ].join(" ");
+      }
 
       // 텍스트 위치 계산 (12시 방향 기준)
       const textAngle = startAngle + anglePerSection / 2;

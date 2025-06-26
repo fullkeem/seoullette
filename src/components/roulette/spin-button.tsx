@@ -17,12 +17,12 @@ export function SpinButton({
   disabled = false,
 }: SpinButtonProps) {
   // 스핀 가능 여부 확인
-  const canSpin = places.length >= 2 && !isSpinning && !disabled;
+  const canSpin = places.length >= 1 && !isSpinning && !disabled;
 
   // 버튼 상태에 따른 텍스트 결정
   const getButtonText = () => {
     if (isSpinning) return "스핀 중...";
-    if (places.length < 2) return "장소를 2개 이상 입력하세요";
+    if (places.length < 1) return "장소를 입력하세요";
     return "룰렛 돌리기! 🎰";
   };
 
@@ -61,20 +61,14 @@ export function SpinButton({
               ? "룰렛이 돌아가는 중입니다"
               : canSpin
               ? "룰렛을 돌려서 장소를 선택합니다"
-              : "스핀하려면 장소를 2개 이상 입력하세요"
+              : "스핀하려면 장소를 입력하세요"
           }
         >
           {getButtonText()}
         </Button>
       </div>
 
-      {places.length > 0 && places.length < 2 && (
-        <p className="text-sm text-gray-500 text-center">
-          현재 {places.length}개 장소 등록됨
-        </p>
-      )}
-
-      {places.length >= 2 && (
+      {places.length >= 1 && (
         <p className="text-sm text-green-600 text-center">
           {places.length}개 장소 중에서 선택됩니다
         </p>

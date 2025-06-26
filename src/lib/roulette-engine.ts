@@ -1,7 +1,7 @@
 import { Place, RouletteEngine } from "@/types";
 
 export class BasicRouletteEngine implements RouletteEngine {
-  private readonly MIN_PLACES = 2;
+  private readonly MIN_PLACES = 1;
   private readonly MAX_PLACES = 10;
   private readonly MIN_SPIN_DURATION = 2000; // 2초
   private readonly MAX_SPIN_DURATION = 4000; // 4초
@@ -39,7 +39,7 @@ export class BasicRouletteEngine implements RouletteEngine {
       return false;
     }
 
-    // 개수 체크 (최소 2개)
+    // 개수 체크 (최소 1개)
     if (places.length < this.MIN_PLACES) {
       return false;
     }
