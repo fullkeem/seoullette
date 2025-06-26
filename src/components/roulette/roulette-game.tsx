@@ -90,9 +90,9 @@ export function RouletteGame() {
       </div>
 
       {/* 메인 게임 영역 */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
         {/* 왼쪽: 장소 입력 및 목록 */}
-        <div className="space-y-6">
+        <div className="flex flex-col space-y-6 h-full">
           <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
               📍 장소 추가
@@ -104,7 +104,7 @@ export function RouletteGame() {
             />
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+          <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm flex-1">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
               📋 장소 목록
             </h2>
@@ -118,13 +118,13 @@ export function RouletteGame() {
         </div>
 
         {/* 오른쪽: 룰렛 휠 및 스핀 버튼 */}
-        <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+        <div className="flex flex-col h-full">
+          <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm h-full flex flex-col">
             <h2 className="text-lg font-semibold text-gray-900 mb-4 text-center">
               🎯 룰렛 휠
             </h2>
 
-            <div className="flex flex-col items-center space-y-6">
+            <div className="flex flex-col items-center justify-center space-y-6 flex-1">
               {/* 룰렛 휠 */}
               <RouletteWheel
                 places={places}
