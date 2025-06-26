@@ -55,7 +55,7 @@ export function SpinButton({
           loading={isSpinning}
           variant="primary"
           size="lg"
-          className="min-w-48 text-lg font-bold"
+          className="min-w-44 sm:min-w-48 text-base sm:text-lg font-bold min-h-[44px]"
           aria-label={
             isSpinning
               ? "룰렛이 돌아가는 중입니다"
@@ -69,13 +69,13 @@ export function SpinButton({
       </div>
 
       {places.length > 0 && places.length < 2 && (
-        <p className="text-sm text-amber-600 text-center">
+        <p className="text-xs sm:text-sm text-amber-600 text-center">
           현재 {places.length}개 장소 등록됨 (최소 2개 필요)
         </p>
       )}
 
       {places.length >= 2 && (
-        <p className="text-sm text-green-600 text-center">
+        <p className="text-xs sm:text-sm text-green-600 text-center">
           {places.length}개 장소 중에서 선택됩니다
         </p>
       )}

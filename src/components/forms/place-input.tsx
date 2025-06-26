@@ -76,7 +76,7 @@ export function PlaceInput({
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2">
         <div className="flex-1">
           <Input
             value={inputValue}
@@ -92,13 +92,14 @@ export function PlaceInput({
           disabled={disabled || !isValid}
           variant="primary"
           size="md"
+          className="w-full sm:w-auto min-w-[80px]"
         >
           추가
         </Button>
       </div>
 
       {existingPlaces.length >= 10 && (
-        <p className="text-sm text-amber-600">
+        <p className="text-xs sm:text-sm text-amber-600">
           최대 10개까지 장소를 추가할 수 있습니다.
         </p>
       )}

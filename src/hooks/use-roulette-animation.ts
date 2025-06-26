@@ -190,6 +190,7 @@ export function useRouletteAnimation({
       calculateFinalRotation,
       duration,
       onAnimationComplete,
+      getPointedSection,
     ]
   );
 

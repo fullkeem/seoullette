@@ -8,6 +8,7 @@ interface RouletteWheelProps {
   rotation?: number;
   size?: number;
   className?: string;
+  responsive?: boolean;
 }
 
 export function RouletteWheel({
@@ -15,6 +16,7 @@ export function RouletteWheel({
   rotation = 0,
   size = 300,
   className = "",
+  responsive = true,
 }: RouletteWheelProps) {
   // 색상 팔레트 (접근성 고려) - useMemo로 이동
 
@@ -103,14 +105,22 @@ export function RouletteWheel({
     return { sections, centerX, centerY, radius };
   }, [places, size]);
 
+  // 반응형 크기 계산
+  const responsiveSize = responsive ? Math.min(size, 240) : size;
+
   if (places.length === 0) {
     return (
       <div
         className={`flex items-center justify-center bg-gray-100 rounded-full border-2 border-gray-300 ${className}`}
-        style={{ width: size, height: size }}
+        style={{
+          width: responsiveSize,
+          height: responsiveSize,
+          minWidth: responsive ? "200px" : "auto",
+          minHeight: responsive ? "200px" : "auto",
+        }}
       >
         <div className="text-center text-gray-500">
-          <p className="text-sm font-medium">룰렛 휠</p>
+          <p className="text-xs sm:text-sm font-medium">룰렛 휠</p>
           <p className="text-xs mt-1">장소를 추가해주세요</p>
         </div>
       </div>
@@ -120,16 +130,24 @@ export function RouletteWheel({
   return (
     <div
       className={`relative ${className}`}
-      style={{ width: size, height: size }}
+      style={{
+        width: responsiveSize,
+        height: responsiveSize,
+        minWidth: responsive ? "200px" : "auto",
+        minHeight: responsive ? "200px" : "auto",
+      }}
     >
       <svg
-        width={size}
-        height={size}
-        className="drop-shadow-lg"
+        width={responsiveSize}
+        height={responsiveSize}
+        className="drop-shadow-lg w-full h-full"
         style={{
           transform: `rotate(${rotation}deg)`,
           willChange: "transform",
+          maxWidth: "100%",
+          height: "auto",
         }}
+        viewBox={`0 0 ${size} ${size}`}
       >
         {/* 룰렛 섹션들 */}
         {wheelData.sections.map((section) => (
@@ -148,7 +166,7 @@ export function RouletteWheel({
               x={section.textX}
               y={section.textY}
               fill="white"
-              fontSize={Math.max(10, size / 25)}
+              fontSize={Math.max(8, size / 20)}
               fontWeight="600"
               textAnchor="middle"
               dominantBaseline="middle"
@@ -170,10 +188,10 @@ export function RouletteWheel({
         <circle
           cx={wheelData.centerX}
           cy={wheelData.centerY}
-          r={size * 0.08}
+          r={size * 0.03}
           fill="#374151"
           stroke="#ffffff"
-          strokeWidth="3"
+          strokeWidth="2"
           className="drop-shadow-md"
         />
       </svg>
@@ -182,16 +200,16 @@ export function RouletteWheel({
       <div
         className="absolute -top-4 left-1/2 transform -translate-x-1/2"
         style={{
-          marginTop: size * 0.15, // 룰렛 내부로 이동
+          marginTop: responsiveSize * 0.15, // 룰렛 내부로 이동
           zIndex: 10,
         }}
       >
         <div
           className="w-0 h-0 border-l-transparent border-r-transparent border-t-red-600 drop-shadow-lg"
           style={{
-            borderTopWidth: size * 0.12, // 더 큰 화살표
-            borderLeftWidth: size * 0.03,
-            borderRightWidth: size * 0.03,
+            borderTopWidth: responsiveSize * 0.12, // 더 큰 화살표
+            borderLeftWidth: responsiveSize * 0.04,
+            borderRightWidth: responsiveSize * 0.04,
             filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
           }}
         />

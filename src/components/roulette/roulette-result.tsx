@@ -51,29 +51,33 @@ export function RouletteResult({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="룰렛 결과">
-      <div className="text-center space-y-6">
+      <div className="text-center space-y-4 sm:space-y-6">
         {/* 축하 메시지 */}
         <div className="space-y-2">
-          <h3 className="text-2xl font-bold text-indigo-600">
+          <h3 className="text-xl sm:text-2xl font-bold text-indigo-600">
             {congratsMessage}
           </h3>
-          <p className="text-gray-600">서울렛이 선택한 장소는...</p>
+          <p className="text-sm sm:text-base text-gray-600">
+            서울렛이 선택한 장소는...
+          </p>
         </div>
 
         {/* 선택된 장소 강조 표시 */}
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-6 border-2 border-indigo-200">
-          <div className="text-4xl font-bold text-indigo-700 mb-2">
+        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 sm:p-6 border-2 border-indigo-200">
+          <div className="text-2xl sm:text-4xl font-bold text-indigo-700 mb-2">
             📍 {result.name}
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="text-xs sm:text-sm text-gray-500">
             등록일: {formatTime(result.createdAt)}
           </div>
         </div>
 
         {/* 추가 메시지 */}
         <div className="space-y-2">
-          <p className="text-gray-700 font-medium">즐거운 시간 보내세요! 🎈</p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm sm:text-base text-gray-700 font-medium">
+            즐거운 시간 보내세요! 🎈
+          </p>
+          <p className="text-xs sm:text-sm text-gray-500">
             다른 장소를 선택하고 싶다면 다시 돌려보세요.
           </p>
         </div>
@@ -84,7 +88,7 @@ export function RouletteResult({
             onClick={handleRestart}
             variant="primary"
             size="lg"
-            className="flex-1"
+            className="flex-1 min-h-[48px]"
           >
             🎰 다시 돌리기
           </Button>
@@ -92,7 +96,7 @@ export function RouletteResult({
             onClick={onClose}
             variant="secondary"
             size="lg"
-            className="flex-1"
+            className="flex-1 min-h-[48px]"
           >
             ✅ 확인
           </Button>

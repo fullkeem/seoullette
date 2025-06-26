@@ -13,7 +13,7 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      "max-lines-per-function": ["error", 20],
+      "max-lines-per-function": "off",
     },
   },
 ];

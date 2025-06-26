@@ -78,23 +78,23 @@ export function RouletteGame() {
   const placeNames = places.map((place) => place.name);
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6 space-y-6 sm:space-y-8">
       {/* 헤더 */}
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
           🎰 서울렛 (Seoul-lette)
         </h1>
-        <p className="text-gray-600">
+        <p className="text-sm sm:text-base text-gray-600">
           서울 어디로 갈까? 룰렛으로 결정해보세요!
         </p>
       </div>
 
       {/* 메인 게임 영역 */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
         {/* 왼쪽: 장소 입력 및 목록 */}
-        <div className="flex flex-col space-y-6 h-full">
-          <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="flex flex-col space-y-4 sm:space-y-6 h-full">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
               📍 장소 추가
             </h2>
             <PlaceInput
@@ -104,8 +104,8 @@ export function RouletteGame() {
             />
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm flex-1">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm flex-1">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
               📋 장소 목록
             </h2>
             <PlaceList
@@ -119,18 +119,18 @@ export function RouletteGame() {
 
         {/* 오른쪽: 룰렛 휠 및 스핀 버튼 */}
         <div className="flex flex-col h-full">
-          <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm h-full flex flex-col">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm h-full flex flex-col">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 text-center">
               🎯 룰렛 휠
             </h2>
 
-            <div className="flex flex-col items-center justify-center space-y-6 flex-1">
+            <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 flex-1">
               {/* 룰렛 휠 */}
               <RouletteWheel
                 places={places}
                 rotation={rotation}
                 size={280}
-                className="mx-auto"
+                className="mx-auto w-full max-w-[280px] sm:max-w-none"
               />
 
               {/* 스핀 버튼 */}
@@ -144,7 +144,7 @@ export function RouletteGame() {
               {/* 상태 표시 */}
               {(isSpinning || isAnimating) && (
                 <div className="text-center">
-                  <div className="inline-flex items-center px-3 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                  <div className="inline-flex items-center px-3 py-2 rounded-full text-xs sm:text-sm font-medium bg-blue-100 text-blue-800">
                     <div className="animate-spin -ml-1 mr-2 h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
                     {isSpinning ? "결과 계산 중..." : "룰렛 돌아가는 중..."}
                   </div>
