@@ -34,7 +34,7 @@ export class LocalStorageService implements StorageService {
     }
   }
 
-  private validatePlaces(data: any): Place[] {
+  private validatePlaces(data: unknown): Place[] {
     if (!Array.isArray(data)) return [];
 
     return data

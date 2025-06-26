@@ -9,7 +9,7 @@ export function Input({
   onKeyDown,
 }: InputProps) {
   const baseClasses =
-    "w-full px-3 py-2 border rounded-md text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1";
+    "w-full px-3 py-2 border rounded-md text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 text-gray-900 placeholder-gray-500";
   const normalClasses =
     "border-gray-300 focus:ring-indigo-500 focus:border-indigo-500";
   const errorClasses = "border-red-300 focus:ring-red-500 focus:border-red-500";

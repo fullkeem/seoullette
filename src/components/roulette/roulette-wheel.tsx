@@ -16,21 +16,23 @@ export function RouletteWheel({
   size = 300,
   className = "",
 }: RouletteWheelProps) {
-  // 색상 팔레트 (접근성 고려)
-  const colors = [
-    "#3B82F6", // blue-500
-    "#EF4444", // red-500
-    "#10B981", // emerald-500
-    "#F59E0B", // amber-500
-    "#8B5CF6", // violet-500
-    "#06B6D4", // cyan-500
-    "#F97316", // orange-500
-    "#84CC16", // lime-500
-    "#EC4899", // pink-500
-    "#6B7280", // gray-500
-  ];
+  // 색상 팔레트 (접근성 고려) - useMemo로 이동
 
   const wheelData = useMemo(() => {
+    // 색상 팔레트 (접근성 고려)
+    const colors = [
+      "#3B82F6", // blue-500
+      "#EF4444", // red-500
+      "#10B981", // emerald-500
+      "#F59E0B", // amber-500
+      "#8B5CF6", // violet-500
+      "#06B6D4", // cyan-500
+      "#F97316", // orange-500
+      "#84CC16", // lime-500
+      "#EC4899", // pink-500
+      "#6B7280", // gray-500
+    ];
+
     if (places.length === 0)
       return {
         sections: [],
@@ -87,7 +89,7 @@ export function RouletteWheel({
     });
 
     return { sections, centerX, centerY, radius };
-  }, [places, size, colors]);
+  }, [places, size]);
 
   if (places.length === 0) {
     return (
@@ -118,7 +120,7 @@ export function RouletteWheel({
         }}
       >
         {/* 룰렛 섹션들 */}
-        {wheelData.sections.map((section, index) => (
+        {wheelData.sections.map((section) => (
           <g key={section.place.id}>
             {/* 섹션 배경 */}
             <path
