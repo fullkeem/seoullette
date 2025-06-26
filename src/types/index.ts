@@ -37,6 +37,8 @@ export interface ButtonProps {
   variant?: "primary" | "secondary" | "danger";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
+  type?: "button" | "submit" | "reset";
+  className?: string;
 }
 
 export interface InputProps {
@@ -45,6 +47,7 @@ export interface InputProps {
   placeholder?: string;
   disabled?: boolean;
   error?: string;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
 }
 
 export interface ModalProps {

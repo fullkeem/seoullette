@@ -7,6 +7,8 @@ export function Button({
   variant = "primary",
   size = "md",
   loading = false,
+  type = "button",
+  className = "",
 }: ButtonProps) {
   const baseClasses =
     "rounded-md font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 whitespace-nowrap";
@@ -28,9 +30,10 @@ export function Button({
 
   return (
     <button
+      type={type}
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${
         disabled || loading ? "cursor-not-allowed" : ""
-      }`}
+      } ${className}`}
       onClick={onClick}
       disabled={disabled || loading}
     >
