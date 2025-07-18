@@ -68,7 +68,7 @@ export function PlaceList({
       </div>
 
       {/* 장소 목록 */}
-      <div className="space-y-2 max-h-64 sm:max-h-80 overflow-y-auto">
+      <div className="space-y-2 lg:grid lg:grid-cols-2 lg:gap-3 lg:space-y-0 max-h-64 sm:max-h-80 lg:max-h-96 overflow-y-auto">
         {places.map((place) => (
           <PlaceItem
             key={place.id}
