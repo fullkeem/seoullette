@@ -90,35 +90,83 @@ export function RouletteGame() {
       </div>
 
       {/* 메인 게임 영역 */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
-        {/* 왼쪽: 장소 입력 및 목록 */}
-        <div className="flex flex-col space-y-4 sm:space-y-6 h-full">
-          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm">
-            <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
-              📍 장소 추가
-            </h2>
-            <PlaceInput
-              onAddPlace={handleAddPlace}
-              existingPlaces={placeNames}
-              disabled={isSpinning || isAnimating}
-            />
-          </div>
+      <div className="space-y-6 lg:space-y-8">
+        {/* 모바일: 장소 추가 */}
+        <div className="lg:hidden bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
+            📍 장소 추가
+          </h2>
+          <PlaceInput
+            onAddPlace={handleAddPlace}
+            existingPlaces={placeNames}
+            disabled={isSpinning || isAnimating}
+          />
+        </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm flex-1">
-            <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
-              📋 장소 목록
-            </h2>
-            <PlaceList
+        {/* 모바일: 장소 목록 */}
+        <div className="lg:hidden bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
+            📋 장소 목록
+          </h2>
+          <PlaceList
+            places={places}
+            onRemove={removePlace}
+            onClearAll={clearPlaces}
+            disabled={isSpinning || isAnimating}
+          />
+        </div>
+
+        {/* 모바일: 룰렛 휠 */}
+        <div className="lg:hidden bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 text-center">
+            🎯 룰렛 휠
+          </h2>
+          <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6">
+            {/* 룰렛 휠 */}
+            <RouletteWheel
               places={places}
-              onRemove={removePlace}
-              onClearAll={clearPlaces}
-              disabled={isSpinning || isAnimating}
+              rotation={rotation}
+              size={280}
+              className="mx-auto w-full max-w-[280px]"
             />
+
+            {/* 스핀 버튼 */}
+            <SpinButton
+              places={places}
+              isSpinning={isSpinning || isAnimating}
+              onSpin={handleSpin}
+              disabled={!canSpin}
+            />
+
+            {/* 상태 표시 */}
+            {(isSpinning || isAnimating) && (
+              <div className="text-center">
+                <div className="inline-flex items-center px-3 py-2 rounded-full text-xs sm:text-sm font-medium bg-blue-100 text-blue-800">
+                  <div className="animate-spin -ml-1 mr-2 h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+                  {isSpinning ? "결과 계산 중..." : "룰렛 돌아가는 중..."}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* 오른쪽: 룰렛 휠 및 스핀 버튼 */}
-        <div className="flex flex-col h-full">
+        {/* 데스크톱: 윗 라인 (장소 추가 + 룰렛 휠) */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6 lg:gap-8">
+          {/* 장소 추가 섹션 */}
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm h-full flex flex-col">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
+              📍 장소 추가
+            </h2>
+            <div className="flex-1 flex flex-col justify-center">
+              <PlaceInput
+                onAddPlace={handleAddPlace}
+                existingPlaces={placeNames}
+                disabled={isSpinning || isAnimating}
+              />
+            </div>
+          </div>
+
+          {/* 룰렛 휠 섹션 */}
           <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm h-full flex flex-col">
             <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 text-center">
               🎯 룰렛 휠
@@ -152,6 +200,19 @@ export function RouletteGame() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* 데스크톱: 아래 라인 (장소 목록) */}
+        <div className="hidden lg:block bg-white rounded-lg border border-gray-200 p-4 sm:p-6 shadow-sm">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
+            📋 장소 목록
+          </h2>
+          <PlaceList
+            places={places}
+            onRemove={removePlace}
+            onClearAll={clearPlaces}
+            disabled={isSpinning || isAnimating}
+          />
         </div>
       </div>
 
